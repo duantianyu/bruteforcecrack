@@ -68,9 +68,9 @@ class Mysql
         $ReflectionClass = new ReflectionClass($this);
         $out = [];
         if ($type == 'connection') {
-            $out = ['msg' => $ReflectionClass->getShortName() . ' connection:', 'host' => $this->host, 'port' => $this->port];
+            $out = ['time' => date('Y-m-d H:i:s'), 'msg' => $ReflectionClass->getShortName() . ' connection:', 'host' => $this->host, 'port' => $this->port];
         } elseif ($type == 'auth') {
-            $out = ['msg' => $ReflectionClass->getShortName() . ' auth:', 'user' => $this->user, 'password' => $this->password];
+            $out = ['time' => date('Y-m-d H:i:s'), 'msg' => $ReflectionClass->getShortName() . ' auth:', 'user' => $this->user, 'password' => $this->password];
         }
 
         echo implode(' ', array_values($out)), PHP_EOL;
@@ -80,7 +80,7 @@ class Mysql
     private function success()
     {
         $this->result = 'success';
-        $out = ['host' => $this->host, 'port' => $this->port, 'user' => $this->user, 'password' => $this->password, 'result' => $this->result];
+        $out = ['time' => date('Y-m-d H:i:s'), 'host' => $this->host, 'port' => $this->port, 'user' => $this->user, 'password' => $this->password, 'result' => $this->result];
         $this->out($out);
         unset($out);
 

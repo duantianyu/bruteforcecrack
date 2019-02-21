@@ -75,9 +75,9 @@ class Ftp
     {
         $out = [];
         if ($type == 'connection') {
-            $out = ['msg' => $this->reflection_class->getShortName() . ' connection:', 'host' => $this->host, 'port' => $this->port];
+            $out = ['time' => date('Y-m-d H:i:s'), 'msg' => $this->reflection_class->getShortName() . ' connection:', 'host' => $this->host, 'port' => $this->port];
         } elseif ($type == 'auth') {
-            $out = ['msg' => $this->reflection_class->getShortName() . ' auth:', 'user' => $this->user, 'password' => $this->password];
+            $out = ['time' => date('Y-m-d H:i:s'), 'msg' => $this->reflection_class->getShortName() . ' auth:', 'user' => $this->user, 'password' => $this->password];
         }
 
         echo implode(' ', array_values($out)), PHP_EOL;
@@ -86,7 +86,7 @@ class Ftp
 
     private function output()
     {
-        $out = ['msg' => $this->reflection_class->getShortName(), 'host' => $this->host, 'port' => $this->port, 'user' => $this->user, 'password' => $this->password, 'result' => $this->result];
+        $out = ['time' => date('Y-m-d H:i:s'), 'msg' => $this->reflection_class->getShortName(), 'host' => $this->host, 'port' => $this->port, 'user' => $this->user, 'password' => $this->password, 'result' => $this->result];
         $this->out($out);
         unset($out);
 
